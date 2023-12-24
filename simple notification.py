@@ -13,3 +13,8 @@ from .quantity import parse_quantity
         create_job_resp = api.create_namespaced_job(
             body=job_manifest, namespace='default')
         self.assertEqual(name, create_job_resp.metadata.name)
+
+
+    def test_watch_configmaps(self):
+        client = api_client.ApiClient(configuration=self.config)
+        api = core_v1_api.CoreV1Api(client)
